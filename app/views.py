@@ -36,8 +36,6 @@ def home():
     # If it's a GET request or form validation failed, just render the form
     return render_template('index.html', form=form)
 
-# if url starts with /short, redirect to the corresponding original URL
-
 @main.route('/<short_url>')
 def redirect_to_original(short_url):
     url = ShortLink.query.filter_by(short_url=short_url).first()
