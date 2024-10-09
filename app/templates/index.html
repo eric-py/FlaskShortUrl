@@ -12,7 +12,7 @@
         <div class="title">
             <h1>Shorten Your URLs</h1>
             <p>Easily create and share shortened links for your favorite websites.</p>
-            <form action="{{ url_for('main.shorten') }}" method="post">
+            <form action="{{ url_for('main.home') }}" method="post">
                 {{ form.hidden_tag() }}
                 {{ form.long_url(class="form_input", placeholder="Enter a URL to shorten") }}
                 <br>
@@ -24,8 +24,9 @@
                     {% for category, message in messages %}
                         <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
                             <strong>{{ category|capitalize }}!</strong> {{ message }}
-                            {% if category == 'success' and short_link %}
-                                <a href="{{ short_link }}" class="link-info">{{ short_link }}</a>
+                            {% if category == 'success' and short_url %}
+                                <br>
+                                <a href="{{ short_url }}" class="link-info">{{ short_url }}</a>
                             {% endif %}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
