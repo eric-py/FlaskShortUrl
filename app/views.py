@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .forms import ShortLinkForm
 from .models import ShortLink, db
 import secrets
@@ -35,3 +35,14 @@ def home():
     
     # If it's a GET request or form validation failed, just render the form
     return render_template('index.html', form=form)
+
+# if url starts with /short, redirect to the corresponding original URL
+
+@main.route('/<short_url>')
+def redirect_to_original(short_url):
+    url = ShortLink.query.filter_by(short_url=short_url).first()
+    if url:
+        return redirect(url.original_url, code=302)
+    else:
+        flash('Short URL not found.', 'danger')
+        return redirect(url_for('main.home'))
