@@ -14,8 +14,8 @@ FLASK shorturl is a Flask-based web application that allows users to create shor
 ### Installation
 
 1. Clone the repository:
-    - git clone
-    - `cd flask-shorturl`
+    - git clone `https://github.com/eric-py/FlaskShortUrl.git`
+    - `cd FlaskShortUrl`
 
 2. Set up a virtual environment (optional but recommended):
     - `python -m venv venv`
